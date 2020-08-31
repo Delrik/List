@@ -30,5 +30,13 @@ int main() {
     B.insert(B.begin(),12);
     B.insert(B.begin(),333);
     B.clear();
+    A.pushFront(23);
+    A.pushFront(72);
+    A.pushFront(-13);
+    int* a = A.toArray();
+    for(int i = 0; i<A.size(); i++){
+        cout << A[i+1] << " : " << a[i] << endl;
+    }
+    delete a;
     return 0;
 }

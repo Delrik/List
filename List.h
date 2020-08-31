@@ -29,6 +29,7 @@ public:
     T& operator[](size_t index);
     void clear();
     int size();
+    T* toArray();
 };
 
 template<typename T>
@@ -153,7 +154,7 @@ void List<T>::remove(size_t index) {
 template<typename T>
 void List<T>::goToIndex(int index) {
     if(index==this->index) return;
-    if(index>1&&index<=count){
+    if(index>=1&&index<=count){
         int buf = labs(this->index-index);
          if(index-1<count-index&&index-1<buf){
             current=head;
@@ -211,4 +212,14 @@ void List<T>::clear(){
 template<typename T>
 int List<T>::size() {
     return this->count;
+}
+
+template<typename T>
+T *List<T>::toArray() {
+    T* result = new T[count];
+    for(int i = 0; i<count; i++){
+        goToIndex(i+1);
+        result[i]=current->data;
+    }
+    return result;
 }
